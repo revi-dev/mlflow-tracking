@@ -1,0 +1,9 @@
+services:
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mlflow-server:latest
+    container_name: mlflow-server
+    ports:
+      - 5000:5000
