@@ -16,7 +16,7 @@ https://mlflow.org/docs/latest/tracking.html#scenario-5-mlflow-tracking-server-e
     services:    
         <myservice>:
             networks:
-                - mynetwork
+                - mlflow-net
 
         mlflow:
             image: mlflow-server:latest
@@ -26,13 +26,13 @@ https://mlflow.org/docs/latest/tracking.html#scenario-5-mlflow-tracking-server-e
             volumes:
                 - <path/to/directory>:/usr/mlflow
             networks:
-                - mynetwork
+                - mlflow-net
 
     
     networks:
         mlflow-net:
             driver: bridge
-            name: mynetwork
+            name: <任意のネットワーク名>
     ```
 
 3. 実験コード内で以下を実行
