@@ -4,6 +4,20 @@ services:
       context: .
       dockerfile: Dockerfile
     image: mlflow-server:latest
-    container_name: mlflow-server
+    container_name: ${TRACKING_SERVER_NAME:-default}-mlflow-server
     ports:
-      - 5000:5000
+      - ${TRACKING_SERVER_PROT:-5000}:5000
+    volumes:
+      - type: bind
+        source: /mnt/st01/share/mlflow-tracking/servers/${TRACKING_SERVER_NAME:-default}
+        target: /usr/mlflow
+
+    networks:
+      - mlflow-net
+
+
+networks:
+  mlflow-net:
+    name: mlflow-net
+    driver: bridge
+    external: true

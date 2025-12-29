@@ -1,4 +1,4 @@
-FROM python:3.10.12-slim-buster
+FROM python:3.12.11-slim-bullseye
 
 RUN apt update && apt upgrade -y
 
